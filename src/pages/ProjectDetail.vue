@@ -3,6 +3,7 @@
         <h1 class="text-white text-center">{{ project.title }}</h1>
         <div class="text-white">
             <p>{{ project.body }}</p>
+            <p>{{ categoryName }}</p>
             <!-- <p>{{ project.category.name }}</p> -->
             <ul class="d-flex list-unstyled gap-3">
                 <li v-for="item in project.technologies">
@@ -22,6 +23,7 @@ import { store } from "../store";
         data(){
             return {
                 project: [],
+                categoryName: '',
                 store,
             }
         },
@@ -31,6 +33,7 @@ import { store } from "../store";
                 axios.get(`${this.store.apiUrl}projects/${this.$route.params.slug}`).then((res) => {
                     if(res.data.results){
                         this.project = res.data.results;
+                        this.categoryName = this.project.category.name
                         console.log(this.project);
                     } else {
                         this.$router.push({ name: 'not-found' });

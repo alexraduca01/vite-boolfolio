@@ -1,9 +1,9 @@
 <template>
-  <AppHeader />
-  <div class="bg-secondary vh-100 my-container">
-    <router-view></router-view>
-  </div>
-  <AppFooter />
+    <AppHeader />
+    <div class="vh-100 my-container">
+      <router-view></router-view>
+    </div>
+    <AppFooter />
 </template>
 
 <script>
@@ -39,7 +39,9 @@ import AppFooter from "./components/AppFooter.vue";
 @use './assets/styles/partials/variables' as *;
 
 .my-container {
-  padding-top: 90px;
+  padding-top: 60px;
 }
+
+
 
 </style>
