@@ -1,6 +1,6 @@
 <template>
-    <h2>ProjectDetail</h2>
-    <h3>{{ this.project.title }}</h3>
+    <h1 v-if="project">{{ project.title }}</h1>
+    <img :src="store.imgBasePath + project.image" :alt="project.title">
 </template>
 
 <script>
@@ -16,10 +16,15 @@ import { store } from "../store";
         },
         methods: {
             getProject(){
-                console.log(this.$route);
+                // console.log(this.$route);
                 axios.get(`${this.store.apiUrl}projects/${this.$route.params.slug}`).then((res) => {
-                    this.project = res.data.results;
-                    console.log(this.project);
+                    if(res.data.results){
+                        this.project = res.data.results;
+                    } else {
+                        this.$router.push({ name: 'not-found' });
+                    }
+                    
+                    // console.log(this.project);
                 })
             }
         },

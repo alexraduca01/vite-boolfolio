@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" v-for="item in menu" :key="index">
-          <router-link :to="{ name: item.name }" class="nav-link active" >{{ item.label }}</router-link>
+          <router-link :to="{ name: item.name }" class="nav-link" active-class="active">{{ item.label }}</router-link>
         </li>
       </ul>
       <form class="d-flex" role="search">
