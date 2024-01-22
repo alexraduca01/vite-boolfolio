@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-end py-5">
             <div class="bg-danger-subtle p-2">
                 <button class="btn btn-primary" @click="prevPage()"><i class="fa-solid fa-arrow-left"></i></button>
-                <button class="btn btn-primary" :class="currentPage == n ? 'active' : '' " v-for="n in lastPage" :key="n">{{ n }}</button>
+                <button class="btn btn-primary" @click="currentPage = n, getAllProjects()" :class="currentPage == n ? 'active' : '' " v-for="n in lastPage" :key="n">{{ n }}</button>
                 <button class="btn btn-primary" @click="nextPage()"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
