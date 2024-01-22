@@ -1,20 +1,23 @@
 <template>
-    <div>
+    <main class="container">
         <h1>Projects List</h1>
-        <ul>
-            <li class="mb-2" v-for="item in store.projects" :key="item.id">
-                <router-link :to="{ name: 'project', params: { slug: item.slug } }" class="btn btn-primary" >{{ item.title }}</router-link>
-            </li>
-            
-        </ul>
-    </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3" v-for="item in store.projects" :key="item.id">
+                <AppCard :project="item" />
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>
 import axios from "axios";
 import { store } from "../store";
+import AppCard from "../components/AppCard.vue";
     export default {
         name: 'AppProjects',
+        components: {
+            AppCard,
+        },
         data(){
             return {
                 store,
