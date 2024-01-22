@@ -1,6 +1,17 @@
 <template>
-    <h1 v-if="project">{{ project.title }}</h1>
-    <img :src="store.imgBasePath + project.image" :alt="project.title">
+    <div v-if="project" class="container bg-dark">
+        <h1 class="text-white text-center">{{ project.title }}</h1>
+        <div class="text-white">
+            <p>{{ project.body }}</p>
+            <!-- <p>{{ project.category.name }}</p> -->
+            <ul class="d-flex list-unstyled gap-3">
+                <li v-for="item in project.technologies">
+                    <img :src="item.image" class="tech-img" :alt="item.title">
+                </li>
+            </ul>
+        </div>
+        <img class="img-fluid" :src="store.imgBasePath + project.image" :alt="project.title">
+    </div>
 </template>
 
 <script>
@@ -20,6 +31,7 @@ import { store } from "../store";
                 axios.get(`${this.store.apiUrl}projects/${this.$route.params.slug}`).then((res) => {
                     if(res.data.results){
                         this.project = res.data.results;
+                        console.log(this.project);
                     } else {
                         this.$router.push({ name: 'not-found' });
                     }
@@ -36,4 +48,11 @@ import { store } from "../store";
 
 <style lang="scss" scoped>
 
+.tech-img {
+    width: 40px;
+    height: 40px;
+}
+.container {
+    height: 95%!important;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <main class="container">
-        <h1>Projects List</h1>
-        <div class="row justify-content-between gap-lg-0 gap-sm-3">
+        <h1 class="text-white text-center">Projects List</h1>
+        <div class="row justify-content-between gap-lg-0 gap-3">
             <div class="col-12 col-lg-4 p-0" v-for="item in store.projects" :key="item.id">
                 <AppCard :project="item" class="mx-2" />
             </div>
