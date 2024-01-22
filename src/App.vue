@@ -1,6 +1,8 @@
 <template>
   <AppHeader />
-  <router-view></router-view>
+  <div class="bg-secondary vh-100 my-container">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -33,6 +35,8 @@ import AppHeader from "./components/AppHeader.vue";
 <style lang="scss" scoped>
 @use './assets/styles/partials/variables' as *;
 
-
+.my-container {
+  padding-top: 90px;
+}
 
 </style>
