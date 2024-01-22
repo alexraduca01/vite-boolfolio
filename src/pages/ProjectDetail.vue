@@ -1,5 +1,5 @@
 <template>
-    <div v-if="project" class="container bg-dark">
+    <div v-if="project" class="container bg-dark h-100">
         <h1 class="text-white text-center">{{ project.title }}</h1>
         <div class="text-white">
             <p>{{ project.body }}</p>
@@ -51,8 +51,5 @@ import { store } from "../store";
 .tech-img {
     width: 40px;
     height: 40px;
-}
-.container {
-    height: 95%!important;
 }
 </style>
