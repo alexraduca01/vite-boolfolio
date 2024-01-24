@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-white">Contact Us</h1>
+    <h1 class="text-white text-center my-3">Contact Us</h1>
     <ContactForm />
 </template>
 

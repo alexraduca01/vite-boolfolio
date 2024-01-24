@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submitForm()">
+    <form class="w-50 m-auto" @submit.prevent="submitForm()">
         <div class="mb-3 text-white">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" aria-describedby="nameHelp" v-model="name">

@@ -30,7 +30,7 @@ export default {
           name: "projects",
         },
         {
-          label: "Contacts",
+          label: "Contact Us",
           name: "contacts",
         },
       ],
