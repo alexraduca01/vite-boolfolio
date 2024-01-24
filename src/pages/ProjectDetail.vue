@@ -3,13 +3,13 @@
         <h1 class="text-white text-center">{{ project.title }}</h1>
         <div class="text-white">
             <p>{{ project.body }}</p>
-            <p>{{ categoryName }}</p>
-            <!-- <p>{{ project.category.name }}</p> -->
+            <p v-if="project.category">{{ project.category.name }}</p>
             <ul class="d-flex list-unstyled gap-3">
                 <li v-for="item in project.technologies">
                     <img :src="item.image" class="tech-img" :alt="item.title">
                 </li>
             </ul>
+            <router-link  :to="{ name: 'project', params: { slug: 'boolzapp' } }" class="btn btn-primary">Back</router-link>
         </div>
         <img class="img-fluid" :src="store.imgBasePath + project.image" :alt="project.title">
     </div>
@@ -45,7 +45,12 @@ import { store } from "../store";
         },
         mounted(){
             this.getProject();
-        }
+            // this.$watch(() => this.$route.params, (toParams, previousParams) => {
+            //     if(toParams !== previousParams){
+            //         this.getProject();  
+            //     } 
+            // })
+        },
     }
 </script>
 

@@ -13,6 +13,12 @@
                 <button class="btn btn-primary" @click="nextPage()"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
+        <div>
+            <select @change="getFilteredProjects()" v-model="selected">
+                <option value="">All</option>
+                <option :value="item.name" v-for="item in store.categories"> {{ item.name }} </option>
+            </select>
+        </div>
     </main>
 </template>
 
@@ -30,6 +36,7 @@ import AppCard from "../components/AppCard.vue";
                 store,
                 currentPage: 1,
                 lastPage: 0,
+                selected: '',
             }
         },
         methods: {
@@ -37,6 +44,26 @@ import AppCard from "../components/AppCard.vue";
                 axios.get(`${this.store.apiUrl}projects${this.store.urlPagination}${this.currentPage}`).then((res) => {
                     store.projects = res.data.results.data;
                     this.lastPage = res.data.results.last_page;
+                    console.log(store.projects);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            },
+            getAllCategories(){
+                axios.get(`${this.store.apiUrl}categories`).then((res) => {
+                    store.categories = res.data.results;
+                    for(let i = 0; i < store.categories.length; i++){
+                        this.filter.push(store.categories[i].name);
+                    }
+                    console.log(this.filter);
+                    console.log(store.categories);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            },
+            getFilteredProjects(){
+                axios.get(`${this.store.apiUrl}categories/projects${this.store.urlCategory}${this.selected}`).then((res) => {
+                    store.projects = res.data.results;
                     console.log(store.projects);
                 }).catch((err) => {
                     console.log(err);
@@ -58,8 +85,10 @@ import AppCard from "../components/AppCard.vue";
                 this.getAllProjects();
             }
         },
-        mounted(){
+        created(){
             this.getAllProjects();
+            this.getAllCategories();
+            // this.getFilteredProjects();
         }
     }
 </script>
